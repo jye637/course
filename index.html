@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高雄市蔡文國小 | 資訊素養網</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f0fdf4; /* 淺綠色背景 */
+        }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Dropdown Menu Animation */
+        .group:hover .group-hover\:block {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Modal Animation */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-green-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- 模擬校徽 -->
+                <div class="bg-white text-green-700 p-2 rounded-full">
+                    <i class="fa-solid fa-leaf text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wide">高雄市蔡文國小</h1>
+                    <p class="text-xs text-green-100">資訊素養教育網</p>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="xl:hidden text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Menu (Top Right) -->
+            <!-- Updated to handle more items -->
+            <div class="hidden xl:flex items-center space-x-2 font-medium text-sm">
+                
+                <!-- Grade 3-6 Links -->
+                <button onclick="openModal(3)" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-3 mr-1.5 text-green-300"></i>三年級</button>
+                <button onclick="openModal(4)" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-4 mr-1.5 text-green-300"></i>四年級</button>
+                <button onclick="openModal(5)" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-5 mr-1.5 text-green-300"></i>五年級</button>
+                <button onclick="openModal(6)" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-6 mr-1.5 text-green-300"></i>六年級</button>
+
+                <!-- New Menu Items -->
+                <button onclick="openModal('ipad')" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-tablet-screen-button mr-1.5 text-green-300"></i>iPad使用</button>
+                <button onclick="openModal('websites')" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-globe mr-1.5 text-green-300"></i>常用網站</button>
+                <button onclick="openModal('teachers')" class="hover:bg-green-600 px-3 py-2 rounded-lg transition focus:outline-none flex items-center whitespace-nowrap"><i class="fa-solid fa-chalkboard-user mr-1.5 text-green-300"></i>教師介紹</button>
+
+                <!-- Useful Links Dropdown (Collapsed Topics) -->
+                <div class="relative group ml-2">
+                    <button class="flex items-center space-x-1 bg-yellow-400 text-green-900 px-4 py-1.5 rounded-full hover:bg-yellow-300 transition shadow-md focus:outline-none font-bold whitespace-nowrap">
+                        <span>常用連結</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 hidden group-hover:block text-gray-800 border border-green-100 z-50">
+                        <div class="px-4 py-2 text-xs text-gray-400 border-b border-gray-100 mb-1">素養主題專區</div>
+                        <a href="#etiquette" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 transition"><i class="fa-solid fa-comments mr-2 text-green-500"></i>網路禮儀</a>
+                        <a href="#security" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 transition"><i class="fa-solid fa-lock mr-2 text-green-500"></i>資訊安全</a>
+                        <a href="#bullying" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 transition"><i class="fa-solid fa-hand-holding-heart mr-2 text-green-500"></i>預防霸凌</a>
+                        <a href="#copyright" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 transition"><i class="fa-solid fa-copyright mr-2 text-green-500"></i>智慧財產</a>
+                        <a href="#health" class="block px-4 py-2 hover:bg-green-50 hover:text-green-700 transition"><i class="fa-solid fa-tree mr-2 text-green-500"></i>健康上網</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-green-800 border-t border-green-600 max-h-[80vh] overflow-y-auto">
+            <div class="p-2 grid grid-cols-2 gap-2">
+                <!-- Mobile Grid for Grades & New Items -->
+                <button onclick="openModal(3); closeMobileMenu();" class="bg-green-700 p-3 rounded text-white hover:bg-green-600 text-center">三年級</button>
+                <button onclick="openModal(4); closeMobileMenu();" class="bg-green-700 p-3 rounded text-white hover:bg-green-600 text-center">四年級</button>
+                <button onclick="openModal(5); closeMobileMenu();" class="bg-green-700 p-3 rounded text-white hover:bg-green-600 text-center">五年級</button>
+                <button onclick="openModal(6); closeMobileMenu();" class="bg-green-700 p-3 rounded text-white hover:bg-green-600 text-center">六年級</button>
+                
+                <button onclick="openModal('ipad'); closeMobileMenu();" class="bg-green-600 p-3 rounded text-white hover:bg-green-500 text-center col-span-2">iPad 使用</button>
+                <button onclick="openModal('websites'); closeMobileMenu();" class="bg-green-600 p-3 rounded text-white hover:bg-green-500 text-center">常用網站</button>
+                <button onclick="openModal('teachers'); closeMobileMenu();" class="bg-green-600 p-3 rounded text-white hover:bg-green-500 text-center">教師介紹</button>
+            </div>
+            
+            <div class="border-t border-green-700 mt-2 pt-2 pb-4">
+                <p class="px-4 py-2 text-yellow-300 text-sm font-bold">常用連結（素養主題）</p>
+                <a href="#etiquette" onclick="closeMobileMenu()" class="block px-4 py-2 text-white hover:bg-green-700 pl-8"><i class="fa-solid fa-comments mr-2 opacity-50"></i>網路禮儀</a>
+                <a href="#security" onclick="closeMobileMenu()" class="block px-4 py-2 text-white hover:bg-green-700 pl-8"><i class="fa-solid fa-lock mr-2 opacity-50"></i>資訊安全</a>
+                <a href="#bullying" onclick="closeMobileMenu()" class="block px-4 py-2 text-white hover:bg-green-700 pl-8"><i class="fa-solid fa-hand-holding-heart mr-2 opacity-50"></i>預防霸凌</a>
+                <a href="#copyright" onclick="closeMobileMenu()" class="block px-4 py-2 text-white hover:bg-green-700 pl-8"><i class="fa-solid fa-copyright mr-2 opacity-50"></i>智慧財產</a>
+                <a href="#health" onclick="closeMobileMenu()" class="block px-4 py-2 text-white hover:bg-green-700 pl-8"><i class="fa-solid fa-tree mr-2 opacity-50"></i>健康上網</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-br from-green-500 to-teal-600 text-white py-16 hero-pattern">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-block bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 mb-4 text-sm font-semibold border border-white/30">
+                <i class="fa-solid fa-shield-halved mr-2"></i> 安全．合理．合宜．合法
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-md">做個聰明的數位小公民</h2>
+            <p class="text-xl md:text-2xl text-green-50 max-w-2xl mx-auto mb-8">
+                在網路世界裡，我們也要像在校園一樣，<br>
+                懂得保護自己，尊重他人，快樂學習。
+            </p>
+            <div class="inline-block bg-white/10 backdrop-blur rounded-lg px-6 py-4 border border-white/20">
+                <p class="mb-2 text-sm text-green-100">想要尋找上課資源嗎？</p>
+                <p class="font-bold"><i class="fa-solid fa-arrow-up mr-2 animate-bounce"></i> 請點選上方的選單</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 flex-grow">
+        
+        <!-- Intro Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 card-hover">
+                <div class="text-blue-500 text-3xl mb-4"><i class="fa-solid fa-user-shield"></i></div>
+                <h3 class="text-xl font-bold mb-2">保護隱私</h3>
+                <p class="text-gray-600">不隨意透露姓名、地址、電話與學校等個人資料。</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-500 card-hover">
+                <div class="text-red-500 text-3xl mb-4"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3 class="text-xl font-bold mb-2">網路禮儀</h3>
+                <p class="text-gray-600">網路上雖然看不到臉，但也要保持禮貌，不說髒話。</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-500 card-hover">
+                <div class="text-yellow-500 text-3xl mb-4"><i class="fa-solid fa-clock"></i></div>
+                <h3 class="text-xl font-bold mb-2">適度使用</h3>
+                <p class="text-gray-600">每使用30分鐘休息10分鐘，多到戶外走走。</p>
+            </div>
+        </div>
+
+        <!-- Section 1: 網路禮儀 -->
+        <section id="etiquette" class="mb-16 scroll-mt-24">
+            <div class="flex flex-col md:flex-row items-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="md:w-1/2 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-indigo-100 text-indigo-700 p-3 rounded-full mr-4"><i class="fa-solid fa-comments text-2xl"></i></span>
+                        <h2 class="text-3xl font-bold text-gray-800">網路禮儀 Netiquette</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        在網路上發言時，因為看不到對方的表情，文字很容易被誤解。所以我們要更小心用詞。
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>發言前先思考，這句話會不會傷害到人？</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>尊重不同的意見，不進行人身攻擊。</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> <span>不轉傳未經證實的謠言（假消息）。</span></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 bg-indigo-50 h-64 md:h-auto flex items-center justify-center p-6">
+                     <i class="fa-solid fa-laptop-code text-9xl text-indigo-200"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 資訊安全 -->
+        <section id="security" class="mb-16 scroll-mt-24">
+            <div class="flex flex-col md:flex-row-reverse items-center bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="md:w-1/2 p-8">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-blue-100 text-blue-700 p-3 rounded-full mr-4"><i class="fa-solid fa-lock text-2xl"></i></span>
+                        <h2 class="text-3xl font-bold text-gray-800">資訊安全 InfoSec</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        帳號密碼就像家裡的鑰匙一樣重要，絕對不能隨便給別人！
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><i class="fa-solid fa-shield text-blue-500 mt-1 mr-2"></i> <span>設定高強度的密碼（混合英文字母、數字）。</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-shield text-blue-500 mt-1 mr-2"></i> <span>不點擊來路不明的連結或廣告。</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-shield text-blue-500 mt-1 mr-2"></i> <span>使用公用電腦後，記得一定要登出。</span></li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 bg-blue-50 h-64 md:h-auto flex items-center justify-center p-6">
+                    <i class="fa-solid fa-user-lock text-9xl text-blue-200"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: 預防網路霸凌 -->
+        <section id="bullying" class="mb-16 scroll-mt-24">
+            <div class="bg-red-50 rounded-2xl p-8 border border-red-100">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-red-700 mb-2">向網路霸凌說 NO！</h2>
+                    <p class="text-gray-600">如果你在網路上感到不舒服，這不是你的錯，請勇敢求助。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow text-center">
+                        <div class="text-4xl text-red-400 mb-3"><i class="fa-solid fa-eye-slash"></i></div>
+                        <h3 class="font-bold text-lg mb-2">不看不聽</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow text-center">
+                        <div class="text-4xl text-red-400 mb-3"><i class="fa-solid fa-camera"></i></div>
+                        <h3 class="font-bold text-lg mb-2">截圖存證</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow text-center">
+                        <div class="text-4xl text-red-400 mb-3"><i class="fa-solid fa-hands-holding-child"></i></div>
+                        <h3 class="font-bold text-lg mb-2">尋求協助</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 智慧財產 & Health -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <section id="copyright" class="bg-white rounded-2xl shadow-lg p-8 scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <span class="bg-purple-100 text-purple-700 p-3 rounded-full mr-4"><i class="fa-solid fa-copyright text-2xl"></i></span>
+                    <h2 class="text-2xl font-bold text-gray-800">智慧財產權</h2>
+                </div>
+                <div class="space-y-4">
+                    <p class="text-gray-600">使用作品前請注意：</p>
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-purple-700 mb-2">創用CC與合理使用</h4>
+                        <p class="text-sm text-gray-600">找圖片標示「創用CC」，寫作業引用資料需註明出處。</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="health" class="bg-white rounded-2xl shadow-lg p-8 scroll-mt-24">
+                <div class="flex items-center mb-6">
+                    <span class="bg-green-100 text-green-700 p-3 rounded-full mr-4"><i class="fa-solid fa-tree text-2xl"></i></span>
+                    <h2 class="text-2xl font-bold text-gray-800">健康上網 3010</h2>
+                </div>
+                <div class="space-y-3">
+                     <li class="flex items-center bg-green-50 p-3 rounded-lg">
+                        <i class="fa-solid fa-clock text-green-600 mr-3 text-xl"></i>
+                        <span class="font-medium text-gray-700">用眼 30 分鐘，休息 10 分鐘</span>
+                    </li>
+                    <li class="flex items-center bg-green-50 p-3 rounded-lg">
+                        <i class="fa-solid fa-person-walking text-green-600 mr-3 text-xl"></i>
+                        <span class="font-medium text-gray-700">多做戶外活動，遠離 3C 產品</span>
+                    </li>
+                </div>
+            </section>
+        </div>
+
+        <!-- Useful Links -->
+        <section class="text-center mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">相關資源連結</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://eteacher.edu.tw/" target="_blank" class="bg-white border border-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-green-50 hover:border-green-300 hover:text-green-700 transition">教育部全民資安素養網</a>
+                <a href="https://iwin.org.tw/" target="_blank" class="bg-white border border-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-green-50 hover:border-green-300 hover:text-green-700 transition">iWIN 網路內容防護機構</a>
+                <a href="https://165.npa.gov.tw/" target="_blank" class="bg-white border border-gray-200 text-gray-700 px-6 py-2 rounded-full hover:bg-green-50 hover:border-green-300 hover:text-green-700 transition">165 反詐騙諮詢專線</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-8 border-t-4 border-green-600">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h3 class="text-white font-bold text-lg mb-1"><i class="fa-solid fa-school mr-2"></i>高雄市路竹區蔡文國民小學</h3>
+                    <p class="text-sm">Kaohsiung City Lujhu District Caiwen Elementary School</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-xs text-gray-500">Copyright © 蔡文國小 All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESOURCE MODAL -->
+    <div id="resource-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm px-4">
+        <div class="modal-content bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden relative">
+            
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-green-600 to-teal-600 p-6 flex justify-between items-center text-white">
+                <h3 id="modal-title" class="text-2xl font-bold"><i class="fa-solid fa-book-open mr-2"></i><span>年級資源</span></h3>
+                <button onclick="closeModal()" class="text-white hover:text-red-200 transition focus:outline-none">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div id="modal-body" class="p-8 max-h-[70vh] overflow-y-auto">
+                <!-- Content will be injected by JS -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 p-4 text-center border-t border-gray-100">
+                <button onclick="closeModal()" class="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition font-medium">關閉視窗</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            menu.classList.add('hidden');
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('resource-modal');
+        const modalTitle = document.getElementById('modal-title').querySelector('span');
+        const modalBody = document.getElementById('modal-body');
+
+        // Resource Data
+        const resources = {
+            3: {
+                title: "三年級：基礎技能",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-600 mb-4">三年級開始，我們要學習使用鍵盤與登入自己的學習帳號。</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition cursor-pointer">
+                                <div class="bg-blue-200 text-blue-700 p-3 rounded-full mr-4"><i class="fa-solid fa-keyboard"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">中文打字</h4>
+                                    <p class="text-sm text-gray-600">練習注音輸入，打出正確的中文字。</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition cursor-pointer">
+                                <div class="bg-purple-200 text-purple-700 p-3 rounded-full mr-4"><i class="fa-solid fa-id-card"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">學習帳號登入</h4>
+                                    <p class="text-sm text-gray-600">認識 OpenID，學會安全登入學習平台。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            4: {
+                title: "四年級：應用軟體",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-600 mb-4">四年級要學習更多實用的軟體工具，幫助我們完成作業與生活應用。</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-center bg-orange-50 p-3 rounded-lg hover:bg-orange-100 transition">
+                                <i class="fa-solid fa-file-word text-orange-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">認識文書處理</span>
+                            </div>
+                            <div class="flex items-center bg-teal-50 p-3 rounded-lg hover:bg-teal-100 transition">
+                                <i class="fa-solid fa-table text-teal-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">功課表製作</span>
+                            </div>
+                            <div class="flex items-center bg-indigo-50 p-3 rounded-lg hover:bg-indigo-100 transition">
+                                <i class="fa-solid fa-list-check text-indigo-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">考試複習表</span>
+                            </div>
+                            <div class="flex items-center bg-pink-50 p-3 rounded-lg hover:bg-pink-100 transition">
+                                <i class="fa-solid fa-align-left text-pink-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">認識排版</span>
+                            </div>
+                            <div class="flex items-center bg-blue-50 p-3 rounded-lg hover:bg-blue-100 transition">
+                                <i class="fa-solid fa-palette text-blue-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">Canva 設計</span>
+                            </div>
+                            <div class="flex items-center bg-green-50 p-3 rounded-lg hover:bg-green-100 transition">
+                                <i class="fa-solid fa-map-location-dot text-green-600 text-xl mr-3"></i>
+                                <span class="font-bold text-gray-700">Google Map</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            5: {
+                title: "五年級",
+                content: `
+                    <div class="flex flex-col items-center justify-center py-12 text-gray-500">
+                        <i class="fa-solid fa-hammer text-4xl mb-4"></i>
+                        <p class="text-lg">內容建置中...</p>
+                    </div>
+                `
+            },
+            6: {
+                title: "六年級",
+                content: `
+                    <div class="flex flex-col items-center justify-center py-12 text-gray-500">
+                        <i class="fa-solid fa-hammer text-4xl mb-4"></i>
+                        <p class="text-lg">內容建置中...</p>
+                    </div>
+                `
+            },
+            'ipad': {
+                title: "iPad 使用",
+                content: `
+                     <div class="flex flex-col items-center justify-center py-12 text-gray-500">
+                        <i class="fa-solid fa-tablet-screen-button text-4xl mb-4 text-gray-400"></i>
+                        <p class="text-lg">iPad 相關教學資源整理中...</p>
+                    </div>
+                `
+            },
+            'websites': {
+                title: "常用網站",
+                content: `
+                     <div class="flex flex-col items-center justify-center py-12 text-gray-500">
+                        <i class="fa-solid fa-globe text-4xl mb-4 text-gray-400"></i>
+                        <p class="text-lg">常用學習網站整理中...</p>
+                    </div>
+                `
+            },
+            'teachers': {
+                title: "教師介紹",
+                content: `
+                    <div class="space-y-4">
+                        <p class="text-gray-600 mb-6 text-center">感謝辛苦的資訊團隊老師們！</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                            <div class="bg-green-50 p-6 rounded-xl text-center border border-green-100">
+                                <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-3 text-green-700 text-2xl">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-gray-800">王昭欽 老師</h4>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-xl text-center border border-green-100">
+                                <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-3 text-green-700 text-2xl">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-gray-800">王鴻原 老師</h4>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-xl text-center border border-green-100">
+                                <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-3 text-green-700 text-2xl">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-gray-800">徐勝旺 老師</h4>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-xl text-center border border-green-100">
+                                <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-3 text-green-700 text-2xl">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <h4 class="font-bold text-lg text-gray-800">鐘晨豪 老師</h4>
+                            </div>
+                            
+                            <!-- 楊煜傑老師 - 已加入超連結 -->
+                            <a href="http://120.116.71.1/html/tra_chi/introduction/ycintro.html" target="_blank" class="block">
+                                <div class="bg-green-50 p-6 rounded-xl text-center border border-green-100 hover:bg-green-100 transition duration-150">
+                                    <div class="w-16 h-16 bg-green-200 rounded-full flex items-center justify-center mx-auto mb-3 text-green-700 text-2xl">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    </div>
+                                    <h4 class="font-bold text-lg text-gray-800">楊煜傑 老師</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const data = resources[key];
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
