@@ -76,7 +76,6 @@
             </button>
 
             <!-- Desktop Menu (Top Right) -->
-            <!-- Updated to handle more items -->
             <div class="hidden xl:flex items-center space-x-2 font-medium text-sm">
                 
                 <!-- Grade 3-6 Links -->
@@ -375,54 +374,144 @@
                 `
             },
             4: {
-                title: "四年級：應用軟體",
+                title: "四年級：應用軟體 / 文書處理", // 更新標題
                 content: `
-                    <div class="space-y-4">
-                        <p class="text-gray-600 mb-4">四年級要學習更多實用的軟體工具，幫助我們完成作業與生活應用。</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="flex items-center bg-orange-50 p-3 rounded-lg hover:bg-orange-100 transition">
-                                <i class="fa-solid fa-file-word text-orange-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">認識文書處理</span>
+                    <div class="space-y-6">
+                        <p class="text-gray-600 mb-4 font-medium">四年級要學習更多實用的軟體工具，特別是文書處理與專案應用。</p>
+                        
+                        <!-- 新增 Word 2019 學習資源 -->
+                        <div class="bg-indigo-100 p-5 rounded-xl border-l-4 border-indigo-500 shadow-md">
+                            <h4 class="font-bold text-xl text-indigo-800 mb-3 flex items-center"><i class="fa-solid fa-file-word mr-2"></i> Word 2019 學習資源</h4>
+                            <div class="space-y-2">
+                                <a href="http://www.ebook123.com.tw/ebooks/word2019/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-book-open text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Word 2019 小創客輕鬆學 - 電子書</span>
+                                </a>
+                                <a href="http://www.ebook123.com.tw/test2/word2019/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-graduation-cap text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Word 2019 小創客輕鬆學 - 成果採收</span>
+                                </a>
                             </div>
-                            <div class="flex items-center bg-teal-50 p-3 rounded-lg hover:bg-teal-100 transition">
-                                <i class="fa-solid fa-table text-teal-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">功課表製作</span>
-                            </div>
-                            <div class="flex items-center bg-indigo-50 p-3 rounded-lg hover:bg-indigo-100 transition">
-                                <i class="fa-solid fa-list-check text-indigo-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">考試複習表</span>
-                            </div>
-                            <div class="flex items-center bg-pink-50 p-3 rounded-lg hover:bg-pink-100 transition">
-                                <i class="fa-solid fa-align-left text-pink-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">認識排版</span>
-                            </div>
-                            <div class="flex items-center bg-blue-50 p-3 rounded-lg hover:bg-blue-100 transition">
-                                <i class="fa-solid fa-palette text-blue-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">Canva 設計</span>
-                            </div>
-                            <div class="flex items-center bg-green-50 p-3 rounded-lg hover:bg-green-100 transition">
-                                <i class="fa-solid fa-map-location-dot text-green-600 text-xl mr-3"></i>
-                                <span class="font-bold text-gray-700">Google Map</span>
+                        </div>
+
+                        <!-- 既有應用技能 -->
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-4 mt-6">其他應用技能</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center bg-orange-50 p-3 rounded-lg hover:bg-orange-100 transition">
+                                    <i class="fa-solid fa-file-word text-orange-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">認識文書處理</span>
+                                </div>
+                                <div class="flex items-center bg-teal-50 p-3 rounded-lg hover:bg-teal-100 transition">
+                                    <i class="fa-solid fa-table text-teal-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">功課表製作</span>
+                                </div>
+                                <div class="flex items-center bg-indigo-50 p-3 rounded-lg hover:bg-indigo-100 transition">
+                                    <i class="fa-solid fa-list-check text-indigo-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">考試複習表</span>
+                                </div>
+                                <div class="flex items-center bg-pink-50 p-3 rounded-lg hover:bg-pink-100 transition">
+                                    <i class="fa-solid fa-align-left text-pink-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">認識排版</span>
+                                </div>
+                                <div class="flex items-center bg-blue-50 p-3 rounded-lg hover:bg-blue-100 transition">
+                                    <i class="fa-solid fa-palette text-blue-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">Canva 設計</span>
+                                </div>
+                                <div class="flex items-center bg-green-50 p-3 rounded-lg hover:bg-green-100 transition">
+                                    <i class="fa-solid fa-map-location-dot text-green-600 text-xl mr-3"></i>
+                                    <span class="font-bold text-gray-700">Google Map</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 `
             },
             5: {
-                title: "五年級",
+                title: "五年級：Micro:bit / Scratch 專區", // 更新標題
                 content: `
-                    <div class="flex flex-col items-center justify-center py-12 text-gray-500">
-                        <i class="fa-solid fa-hammer text-4xl mb-4"></i>
-                        <p class="text-lg">內容建置中...</p>
+                    <div class="space-y-6">
+                        <p class="text-gray-600 mb-4 font-medium">五年級我們將會接觸到 Micro:bit 開發板，並開始使用 Scratch 進行程式設計。</p>
+                        
+                        <!-- Block 1: Scratch Resources (新增 Scratch 資源) -->
+                        <div class="bg-yellow-100 p-5 rounded-xl border-l-4 border-yellow-500 shadow-md">
+                            <h4 class="font-bold text-xl text-yellow-800 mb-3 flex items-center"><i class="fa-solid fa-cat mr-2"></i> Scratch 程式設計資源</h4>
+                            <div class="space-y-2">
+                                <a href="https://sites.google.com/tsw.kh.edu.tw/scratch-5" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
+                                    <i class="fa-solid fa-link text-yellow-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">高雄市 Scratch 課程</span>
+                                </a>
+                                <a href="https://s3.ilc.edu.tw/curriculum/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
+                                    <i class="fa-solid fa-link text-yellow-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">宜蘭 Scratch3 線上課程 (S3)</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: Micro:bit Editor (既有編輯器) -->
+                        <div class="bg-green-100 p-5 rounded-xl border-l-4 border-green-500 shadow-md">
+                            <h4 class="font-bold text-xl text-green-800 mb-2">Micro:bit 編輯程式</h4>
+                            <a href="https://makecode.microbit.org/" target="_blank" class="inline-flex items-center bg-green-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-green-700 transition shadow-lg">
+                                <i class="fa-solid fa-code mr-2"></i> makecode 網頁版
+                            </a>
+                        </div>
+                        
+                        <!-- Block 3: Extensions (既有擴充功能) -->
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-800 mb-4 mt-6">擴充功能網址（擴展板/感測器）</h4>
+                            <p class="text-sm text-gray-600 mb-4">複製這些網址，在 MakeCode 中加入擴展功能。</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <a href="https://github.com/iCShopMgr/EZ_Start_Kit_for_MakeCode" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                    <i class="fa-solid fa-microchip text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">ezstartkit 擴充板</span>
+                                </a>
+                                <a href="https://github.com/iCShopMgr/MoonCar" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                    <i class="fa-solid fa-car-side text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">登月小車</span>
+                                </a>
+                                <a href="https://github.com/lioujj/pxt-sensors" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                    <i class="fa-solid fa-wave-square text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">超音波 感測器</span>
+                                </a>
+                                <a href="https://github.com/lioujj/pxt-PMS" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                    <i class="fa-solid fa-wind text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">攀藤PMS 感測器</span>
+                                </a>
+                                <a href="https://github.com/lioujj/pxt-lcd1602" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
+                                    <i class="fa-solid fa-display text-blue-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">LCD1602 液晶屏</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 `
             },
             6: {
-                title: "六年級",
+                title: "六年級：進階專題與程式設計", // 更新標題
                 content: `
-                    <div class="flex flex-col items-center justify-center py-12 text-gray-500">
-                        <i class="fa-solid fa-hammer text-4xl mb-4"></i>
-                        <p class="text-lg">內容建置中...</p>
+                    <div class="space-y-6">
+                        <p class="text-gray-600 mb-4 font-medium">六年級將進行更複雜的專題製作，並整合所學的軟硬體知識。</p>
+
+                        <!-- Micro:bit Resources (新增內容) -->
+                        <div class="bg-red-100 p-5 rounded-xl border-l-4 border-red-500 shadow-md">
+                            <h4 class="font-bold text-xl text-red-800 mb-3 flex items-center"><i class="fa-solid fa-flask-vial mr-2"></i> 進階專題與研究</h4>
+                            <div class="space-y-2">
+                                <a href="https://sites.google.com/site/wenyumaker2/%E9%A6%96%E9%A0%81?authuser=0" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
+                                    <i class="fa-solid fa-link text-red-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">阿玉 micro:bit 研究區</span>
+                                </a>
+                                <a href="https://makecode.microbit.org/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
+                                    <i class="fa-solid fa-code text-red-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">micro:Bit 網頁版編輯器</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col items-center justify-center py-6 text-gray-500 border-t pt-8">
+                            <i class="fa-solid fa-lightbulb text-4xl mb-4"></i>
+                            <p class="text-lg">更多畢業專題資源建置中...</p>
+                        </div>
                     </div>
                 `
             },
