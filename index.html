@@ -372,174 +372,181 @@
 
         // Resource Data (Key 統一使用字串)
         const resources = {
-            '3': { // Key changed to string
-                title: "三年級：基礎技能",
-                content: `
-                    <div class="space-y-4">
-                        <p class="text-gray-600 mb-4">三年級開始，我們要學習使用鍵盤與登入自己的學習帳號。</p>
-                        <ul class="space-y-4">
-                            <li class="flex items-center bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition cursor-pointer">
-                                <div class="bg-blue-200 text-blue-700 p-3 rounded-full mr-4"><i class="fa-solid fa-keyboard"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-800">中文打字</h4>
-                                    <p class="text-sm text-gray-600">練習注音輸入，打出正確的中文字。</p>
-                                </div>
-                            </li>
-                            <li class="flex items-center bg-purple-50 p-4 rounded-lg hover:bg-purple-100 transition cursor-pointer">
-                                <div class="bg-purple-200 text-purple-700 p-3 rounded-full mr-4"><i class="fa-solid fa-id-card"></i></div>
-                                <div>
-                                    <h4 class="font-bold text-gray-800">學習帳號登入</h4>
-                                    <p class="text-sm text-gray-600">認識 OpenID，學會安全登入學習平台。</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                `
-            },
-            '4': { // Key changed to string
-                title: "四年級：應用軟體 / 文書處理",
+            '3': { 
+                title: "三年級：創意貼圖秀 & 網路小玩咖",
                 content: `
                     <div class="space-y-6">
-                        <p class="text-gray-600 mb-4 font-medium">四年級要學習更多實用的軟體工具，特別是文書處理與專案應用。</p>
+                        <!-- 上學期 -->
+                        <div class="bg-blue-100 p-5 rounded-xl border-l-4 border-blue-500 shadow-md">
+                            <h4 class="font-bold text-xl text-blue-800 mb-3 flex items-center"><i class="fa-solid fa-paint-brush mr-2"></i> 上學期：創意貼圖秀</h4>
+                            <div class="space-y-3">
+                                <p class="text-sm text-gray-700"><strong>重點學習項目：</strong>滑鼠使用、正確開關機、小畫家基本工具操作（擬人化雞蛋/番茄貼圖製作）。</p>
+                                <p class="text-sm text-gray-700"><strong>適合網路教材：</strong>電腦繪圖教學影片、各類繪圖網站。</p>
+                            </div>
+                        </div>
                         
-                        <!-- Word 2019 學習資源 -->
+                        <!-- 下學期 -->
                         <div class="bg-indigo-100 p-5 rounded-xl border-l-4 border-indigo-500 shadow-md">
-                            <h4 class="font-bold text-xl text-indigo-800 mb-3 flex items-center"><i class="fa-solid fa-file-word mr-2"></i> Word 2019 學習資源</h4>
-                            <div class="space-y-2">
-                                <a href="http://www.ebook123.com.tw/ebooks/word2019/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
-                                    <i class="fa-solid fa-book-open text-indigo-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">Word 2019 小創客輕鬆學 - 電子書</span>
-                                </a>
-                                <a href="http://www.ebook123.com.tw/test2/word2019/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
-                                    <i class="fa-solid fa-graduation-cap text-indigo-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">Word 2019 小創客輕鬆學 - 成果採收</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- 既有應用技能 -->
-                        <div>
-                            <h4 class="font-bold text-xl text-gray-800 mb-4 mt-6">其他應用技能</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="flex items-center bg-orange-50 p-3 rounded-lg hover:bg-orange-100 transition">
-                                    <i class="fa-solid fa-file-word text-orange-600 text-xl mr-3"></i>
-                                    <span class="font-bold text-gray-700">認識文書處理</span>
-                                </div>
-                                <div class="flex items-center bg-teal-50 p-3 rounded-lg hover:bg-teal-100 transition">
-                                    <i class="fa-solid fa-table text-teal-600 text-xl mr-3"></i>
-                                    <span class="font-bold text-gray-700">功課表製作</span>
-                                </div>
-                                <div class="flex items-center bg-indigo-50 p-3 rounded-lg hover:bg-indigo-100 transition">
-                                    <i class="fa-solid fa-list-check text-indigo-600 text-xl mr-3"></i>
-                                    <span class="font-bold text-gray-700">考試複習表</span>
-                                </div>
-                                <div class="flex items-center bg-pink-50 p-3 rounded-lg hover:bg-pink-100 transition">
-                                    <i class="fa-solid fa-align-left text-pink-600 text-xl mr-3"></i>
-                                    <span class="font-bold text-gray-700">認識排版</span>
-                                </div>
-                                <div class="flex items-center bg-blue-50 p-3 rounded-lg hover:bg-blue-100 transition">
-                                    <i class="fa-solid fa-palette text-blue-600 text-xl mr-3"></i>
-                                    <span class="font-bold text-gray-700">Canva 設計</span>
-                                </div>
-                                <!-- Updated Google Map Link -->
-                                <a href="https://sites.google.com/tsw.kh.edu.tw/map-learn/%E8%94%A1%E6%96%87%E5%9C%8B%E5%B0%8F%E5%9B%9B%E5%B9%B4%E7%B4%9A%E8%B3%87%E8%A8%8A%E8%AA%B2%E7%A8%8B-google-map" target="_blank" class="flex items-center bg-green-50 p-3 rounded-lg hover:bg-green-100 transition group cursor-pointer border border-green-200">
-                                    <i class="fa-solid fa-map-location-dot text-green-600 text-xl mr-3 group-hover:scale-110 transition-transform"></i>
-                                    <span class="font-bold text-gray-700">Google Map 單元</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            '5': { // Key changed to string
-                title: "五年級：Micro:bit / Scratch 專區",
-                content: `
-                    <div class="space-y-6">
-                        <p class="text-gray-600 mb-4 font-medium">五年級我們將會接觸到 Micro:bit 開發板，並開始使用 Scratch 進行程式設計。</p>
-                        
-                        <!-- Block 1: Scratch Resources -->
-                        <div class="bg-yellow-100 p-5 rounded-xl border-l-4 border-yellow-500 shadow-md">
-                            <h4 class="font-bold text-xl text-yellow-800 mb-3 flex items-center"><i class="fa-solid fa-cat mr-2"></i> Scratch 程式設計資源</h4>
-                            <div class="space-y-2">
-                                <a href="https://sites.google.com/tsw.kh.edu.tw/scratch-5" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
-                                    <i class="fa-solid fa-link text-yellow-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">高雄市 Scratch 課程</span>
-                                </a>
-                                <a href="https://s3.ilc.edu.tw/curriculum/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
-                                    <i class="fa-solid fa-link text-yellow-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">宜蘭 Scratch3 線上課程 (S3)</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Block 2: Micro:bit Editor (既有編輯器) -->
-                        <div class="bg-green-100 p-5 rounded-xl border-l-4 border-green-500 shadow-md">
-                            <h4 class="font-bold text-xl text-green-800 mb-2">Micro:bit 編輯程式</h4>
-                            <a href="https://makecode.microbit.org/" target="_blank" class="inline-flex items-center bg-green-600 text-white font-semibold px-4 py-2 rounded-full hover:bg-green-700 transition shadow-lg">
-                                <i class="fa-solid fa-code mr-2"></i> makecode 網頁版
-                            </a>
-                        </div>
-                        
-                        <!-- Block 3: Extensions (既有擴充功能) -->
-                        <div>
-                            <h4 class="font-bold text-xl text-gray-800 mb-4 mt-6">擴充功能網址（擴展板/感測器）</h4>
-                            <p class="text-sm text-gray-600 mb-4">複製這些網址，在 MakeCode 中加入擴展功能。</p>
-                            
+                            <h4 class="font-bold text-xl text-indigo-800 mb-3 flex items-center"><i class="fa-solid fa-gamepad mr-2"></i> 下學期：網路小玩咖</h4>
+                            <p class="text-sm text-gray-700 mb-3"><strong>學習資源：</strong>喜閱網、E-game（透過 OPEN ID 登入）、Google 搜尋引擎（關鍵字搜尋網頁/圖片/影片）。</p>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                <a href="https://github.com/iCShopMgr/EZ_Start_Kit_for_MakeCode" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                    <i class="fa-solid fa-microchip text-blue-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">ezstartkit 擴充板</span>
+                                <a href="https://mail.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-envelope text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Gmail</span>
                                 </a>
-                                <a href="https://github.com/iCShopMgr/MoonCar" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                    <i class="fa-solid fa-car-side text-blue-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">登月小車</span>
+                                <a href="https://meet.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-video text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google Meet</span>
                                 </a>
-                                <a href="https://github.com/lioujj/pxt-sensors" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                    <i class="fa-solid fa-wave-square text-blue-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">超音波 感測器</span>
+                                <a href="https://classroom.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-chalkboard-user text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google Classroom</span>
                                 </a>
-                                <a href="https://github.com/lioujj/pxt-PMS" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                    <i class="fa-solid fa-wind text-blue-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">攀藤PMS 感測器</span>
+                                <a href="https://reading.kh.edu.tw/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-book-open-reader text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">喜閱網</span>
                                 </a>
-                                <a href="https://github.com/lioujj/pxt-lcd1602" target="_blank" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition border border-blue-100">
-                                    <i class="fa-solid fa-display text-blue-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">LCD1602 液晶屏</span>
+                                <a href="https://www.egame.kh.edu.tw/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-solid fa-puzzle-piece text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">E-game</span>
+                                </a>
+                                <a href="https://www.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-indigo-50 transition border border-indigo-200">
+                                    <i class="fa-brands fa-google text-indigo-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google 搜尋</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 `
             },
-            '6': { // Key changed to string
-                title: "六年級：進階專題與程式設計",
+            '4': { 
+                title: "四年級：i 路竹 e 遊趣 & 藝起玩科技",
                 content: `
                     <div class="space-y-6">
-                        <p class="text-gray-600 mb-4 font-medium">六年級將進行更複雜的專題製作，並整合所學的軟硬體知識。</p>
-
-                        <!-- Micro:bit Resources -->
-                        <div class="bg-red-100 p-5 rounded-xl border-l-4 border-red-500 shadow-md">
-                            <h4 class="font-bold text-xl text-red-800 mb-3 flex items-center"><i class="fa-solid fa-flask-vial mr-2"></i> 進階專題與研究</h4>
-                            <div class="space-y-2">
-                                <a href="https://sites.google.com/site/wenyumaker2/%E9%A6%96%E9%A0%81?authuser=0" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
-                                    <i class="fa-solid fa-link text-red-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">阿玉 micro:bit 研究區</span>
+                        <!-- 上學期 -->
+                        <div class="bg-green-100 p-5 rounded-xl border-l-4 border-green-500 shadow-md">
+                            <h4 class="font-bold text-xl text-green-800 mb-3 flex items-center"><i class="fa-solid fa-map-location-dot mr-2"></i> 上學期：i 路竹 e 遊趣</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>應用軟體：</strong>Word（製作旅遊行程規畫表、插入圖片、版面編排）。</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <a href="https://www.google.com.tw/maps" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-green-50 transition border border-green-200">
+                                    <i class="fa-solid fa-map text-green-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google Map</span>
                                 </a>
+                                <a href="https://www.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-green-50 transition border border-green-200">
+                                    <i class="fa-brands fa-google text-green-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google 資料搜尋</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 下學期 -->
+                        <div class="bg-teal-100 p-5 rounded-xl border-l-4 border-teal-500 shadow-md">
+                            <h4 class="font-bold text-xl text-teal-800 mb-3 flex items-center"><i class="fa-solid fa-palette mr-2"></i> 下學期：藝起玩科技</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>進階軟體：</strong>InkScape（手稿數位化、LOGO 設計）。</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <a href="https://www.canva.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-teal-50 transition border border-teal-200">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-teal-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Canva</span>
+                                </a>
+                                <a href="https://classroom.google.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-teal-50 transition border border-teal-200">
+                                    <i class="fa-solid fa-chalkboard-user text-teal-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google Classroom</span>
+                                </a>
+                                <a href="https://inkscape.org/zh-hant/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-teal-50 transition border border-teal-200">
+                                    <i class="fa-solid fa-pen-nib text-teal-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">InkScape</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            '5': { 
+                title: "五年級：用 Scratch i路竹 & I 遊戲",
+                content: `
+                    <div class="space-y-6">
+                        <!-- 上學期 -->
+                        <div class="bg-yellow-100 p-5 rounded-xl border-l-4 border-yellow-500 shadow-md">
+                            <h4 class="font-bold text-xl text-yellow-800 mb-3 flex items-center"><i class="fa-solid fa-cat mr-2"></i> 上學期：用 Scratch i路竹</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>編程工具：</strong>Scratch 軟體（積木式程式編輯、序列與平行處理概念、在地特色動畫設計）。</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <a href="https://www.google.com.tw/imghp" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
+                                    <i class="fa-solid fa-images text-yellow-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Google 圖片搜尋</span>
+                                </a>
+                                <a href="https://www.youtube.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-yellow-50 transition border border-yellow-200">
+                                    <i class="fa-brands fa-youtube text-yellow-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Youtube 動畫腳本觀摩</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 下學期 -->
+                        <div class="bg-orange-100 p-5 rounded-xl border-l-4 border-orange-500 shadow-md">
+                            <h4 class="font-bold text-xl text-orange-800 mb-3 flex items-center"><i class="fa-solid fa-gamepad mr-2"></i> 下學期：用 Scratch I 遊戲</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>核心應用：</strong>使用 Scratch 創作「走迷宮」、「打地鼠」及「射擊遊戲」。</p>
+                                <p class="text-sm text-gray-700"><strong>適合網路教材：</strong>網路搜尋路竹四寶媒材。</p>
+                            </div>
+                            <div class="grid grid-cols-1 gap-3">
+                                <a href="https://scratch.mit.edu/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-orange-50 transition border border-orange-200">
+                                    <i class="fa-solid fa-cat text-orange-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Scratch 官方網站 (遊戲設計範例觀摩)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            '6': { 
+                title: "六年級：智慧農場 & 影片魔術師",
+                content: `
+                    <div class="space-y-6">
+                        <!-- 上學期 -->
+                        <div class="bg-red-100 p-5 rounded-xl border-l-4 border-red-500 shadow-md">
+                            <h4 class="font-bold text-xl text-red-800 mb-3 flex items-center"><i class="fa-solid fa-seedling mr-2"></i> 上學期：智慧農場 創意應用</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>核心技術：</strong>利用微控制器與感測器（如溫度計）進行智慧農場自動灑水/餵食系統製作。</p>
+                                <p class="text-sm text-gray-700"><strong>教材：</strong>教學影片及自編教材網站。</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <a href="https://makecode.microbit.org/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
                                     <i class="fa-solid fa-code text-red-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">micro:Bit 網頁版編輯器</span>
+                                    <span class="font-medium text-gray-700">MakeCode (micro:bit)</span>
                                 </a>
-                               <!-- FIXED: Meta Quest 3 Link with VR Headset Icon -->
-                                <a href="https://jye637.github.io/metaquest/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
-                                    <i class="fa-solid fa-vr-headset text-red-600 mr-3"></i>
-                                    <span class="font-medium text-gray-700">Meta Quest 3 小學堂</span>
+                                <a href="https://microbit.org/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-red-50 transition border border-red-200">
+                                    <i class="fa-solid fa-microchip text-red-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">micro:bit 官方網站</span>
                                 </a>
                             </div>
                         </div>
-                        
-                        <div class="flex flex-col items-center justify-center py-6 text-gray-500 border-t pt-8">
-                            <i class="fa-solid fa-lightbulb text-4xl mb-4"></i>
-                            <p class="text-lg">更多畢業專題資源建置中...</p>
+
+                        <!-- 下學期 -->
+                        <div class="bg-pink-100 p-5 rounded-xl border-l-4 border-pink-500 shadow-md">
+                            <h4 class="font-bold text-xl text-pink-800 mb-3 flex items-center"><i class="fa-solid fa-film mr-2"></i> 下學期：智慧小車 + 影片魔術師</h4>
+                            <div class="space-y-3 mb-3">
+                                <p class="text-sm text-gray-700"><strong>應用工具：</strong> MakeCode（智慧小車自動循跡控制程式）。</p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <a href="https://tw.cyberlink.com/products/powerdirector-video-editing-software/overview_zh_TW.html" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-pink-50 transition border border-pink-200">
+                                    <i class="fa-solid fa-video text-pink-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">威力導演</span>
+                                </a>
+                                <a href="https://www.canva.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-pink-50 transition border border-pink-200">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-pink-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Canva</span>
+                                </a>
+                                <a href="https://www.youtube.com/" target="_blank" class="flex items-center p-3 bg-white rounded-lg hover:bg-pink-50 transition border border-pink-200">
+                                    <i class="fa-brands fa-youtube text-pink-600 mr-3"></i>
+                                    <span class="font-medium text-gray-700">Youtube 影片與剪輯技巧</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `
